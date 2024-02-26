@@ -50,6 +50,7 @@ app.get('/profile/:profileId', (req, res) => {
     
     getProfile(id).then(profile => {
     let spl = profile.data.split(':');
+    console.log(profile.data);
     let userInfo = [];
     for(let i=0;i<spl.length;i++) {
         if(i%2!=0) {
@@ -62,12 +63,13 @@ app.get('/profile/:profileId', (req, res) => {
     let username = userInfo[0].split("1:")[1];
     let col1 = userInfo[4].split("10:")[1];
     let col2 = userInfo[5].split("11:")[1];
-    let stars = userInfo[6].split("3:")[1];
-    let demons = userInfo[8].split("4:")[1];
-    let cube = userInfo[14].split("21:")[1];
-    let ship = userInfo[15].split("22:")[1];
-    let rank = userInfo[23].split("30:")[1];
-    let glow = userInfo[20].split("28:")[1];
+    let stars = userInfo[7].split("3:")[1];
+    let demons = userInfo[10].split("4:")[1];
+    let cube = userInfo[16].split("21:")[1];
+    let ship = userInfo[17].split("22:")[1];
+    let rank = userInfo[27].split("30:")[1];
+    let glow = userInfo[22].split("28:")[1];
+    let glowCol = userInfo[6].split("51:")[1];
 
     const result = {
         username: username,
@@ -77,6 +79,7 @@ app.get('/profile/:profileId', (req, res) => {
         col1: colors[col1],
         col2: colors[col2],
         glow: Boolean(Number(glow)),
+        glowCol: colors[glowCol],
         cube: cube,
         ship: ship
     };
